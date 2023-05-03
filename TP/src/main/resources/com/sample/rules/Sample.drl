@@ -52,25 +52,30 @@ end
 
 rule "Se for detetado um intruso dentro de uma divisão, ativado fecho da saída dessa divisão"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+        $d: Divisao()
+        $i: Intruso(divisao==$d, true)
     then
-        System.out.println( myMessage );
+        $d.setFecho(true);
 end
 
 
 rule "Se ativado fecho da saída dessa divisão, ativa alarme"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+        $d: Divisao()
+        
+        
     then
-        System.out.println( myMessage );
+        insert (new Alarme());
 end
 
 
 rule "Se alarme ativado avisar equipa segurança e proprietário"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+        $a: Alarme();
+        $s: TeamSecurity();
+        $p: Proprietario();
     then
-        System.out.println( myMessage );
+        System.out.println();
 end
 
 
@@ -84,7 +89,7 @@ end
 
 rule "Se equipa de segurança deteve intruso, desativar alarme e sistema de deteção interno da casa"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+        
     then
         System.out.println( myMessage );
 end
@@ -92,9 +97,9 @@ end
 
 rule "Tudo OK"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+        not Alarm()
     then
-        System.out.println( myMessage );
+        System.out.println( Tudo OK );
 end
 */
 
