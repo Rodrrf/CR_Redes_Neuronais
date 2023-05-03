@@ -2,12 +2,14 @@ package com.sample;
 
 public class Intruso {
 	Divisao divisao;
-	String tipo;
+	boolean pessoa;
 	
-	public Intruso(Divisao divisao, String tipo) {
+	
+
+	public Intruso(Divisao divisao, boolean pessoa) {
 		super();
 		this.divisao = divisao;
-		this.tipo = tipo;
+		this.pessoa = pessoa;
 	}
 
 	public Divisao getDivisao() {
@@ -18,13 +20,14 @@ public class Intruso {
 		this.divisao = divisao;
 	}
 
-	public String getTipo() {
-		return tipo;
+	public boolean isPessoa() {
+		return pessoa;
 	}
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
+	public void setPessoa(boolean pessoa) {
+		this.pessoa = pessoa;
 	}
+
 	
 	
 	
