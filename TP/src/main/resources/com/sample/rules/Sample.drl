@@ -10,9 +10,19 @@ import com.sample.DroolsTest.TeamSecurity;
 
 rule "Se for detetado uma pessoa na rua no horário de deteção, ativa o sistema de deteção interno da casa e notifica proprietário"
     when
-        $d: Divisao()
+    	$d: Divisao()
+        $i: Intruso(divisao=="rua")
+        $cam: CamVigilancia(divisao=="rua",intruso == $i.isPessoa(), ligado == true, detecao == true)
+        $cameras: CamVigilancia()
+        $s: SensorMov()
     then
-        System.out.println( "teste 1 aplicado" );
+    	$s.setLigado(true);
+    	update($s);
+    	System.out.println( "Camaras da divisao " +$cameras.getDivisao() );
+        $cameras.setLigado(true);
+        update($cameras);
+        System.out.println( "Camaras e Sensores das divisoes todas ativados" );
+        
 end
 
 
@@ -86,5 +96,5 @@ rule "Tudo OK"
     then
         System.out.println( myMessage );
 end
-
+*/
 

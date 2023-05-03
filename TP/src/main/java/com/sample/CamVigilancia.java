@@ -2,10 +2,15 @@ package com.sample;
 
 public class CamVigilancia {
 	Divisao divisao;
+	Intruso intruso;
 	boolean ligado; //  0 - camara desligada 1 - camara ligada
-	public CamVigilancia(Divisao divisao, boolean ligado, boolean detecao) {
+	boolean detecao; //  0 - horario de detecao desativado 1 - horario de detecao ativado
+	
+
+	public CamVigilancia(Divisao divisao, Intruso intruso, boolean ligado, boolean detecao) {
 		super();
 		this.divisao = divisao;
+		this.intruso = intruso;
 		this.ligado = ligado;
 		this.detecao = detecao;
 	}
@@ -17,8 +22,6 @@ public class CamVigilancia {
 	public void setDetecao(boolean detecao) {
 		this.detecao = detecao;
 	}
-
-	boolean detecao; //  0 - horario de detecao desativado 1 - horario de detecao ativado
 
 	public Divisao getDivisao() {
 		return divisao;
@@ -34,6 +37,14 @@ public class CamVigilancia {
 
 	public void setLigado(boolean ligado) {
 		this.ligado = ligado;
+	}
+	
+	public Intruso getIntruso() {
+		return intruso;
+	}
+
+	public void setIntruso(Intruso intruso) {
+		this.intruso = intruso;
 	}
 	
 	
