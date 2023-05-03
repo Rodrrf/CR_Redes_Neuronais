@@ -25,6 +25,10 @@ public class DroolsTest {
        	 	kSession.insert( d2 );
        	 	kSession.insert( d3 );
        	 	
+       	 	
+       	 	detecaoPerimetro det = new detecaoPerimetro(d1, true);
+       	 	kSession.insert(det);
+       	 	
        	 	CamVigilancia cam1 = new CamVigilancia(d1, false);
     	 	CamVigilancia cam2 = new CamVigilancia(d2, false);
     	 	CamVigilancia cam3 = new CamVigilancia(d3, false);
@@ -32,15 +36,16 @@ public class DroolsTest {
        	 	kSession.insert(cam2);
        	 	kSession.insert(cam3);
        	
-    	 	//rua nao tem sensor de movimento
+       	 	SensorMov sensor1 = new SensorMov( d2, false ); //rua tem sensor de movimento
        	 	SensorMov sensor2 = new SensorMov( d2, false ); //escritório tem sensor de movimento
        	 	SensorMov sensor3 = new SensorMov( d3, false); //sala tem sensor de movimento
+       	 	kSession.insert( sensor1 );
        	 	kSession.insert( sensor2 );
        	 	kSession.insert( sensor3 );
        	 	
-       	 	Intruso i1 = new Intruso (d1, "pessoa"); //Fogo na rua
-       	 	Intruso i2 = new Intruso (d2, "pessoa"); //Fogo no escritório
-       	 	Intruso i3 = new Intruso (d3, "cao"); //Fogo na sala
+       	 	Intruso i1 = new Intruso (d1, "pessoa"); //Intruso na rua
+       	 	Intruso i2 = new Intruso (d2, "pessoa"); //Intruso no escritório
+       	 	Intruso i3 = new Intruso (d3, "cao"); //Falso Intruso na sala
        	 	kSession.insert( i1 );
        	 	kSession.insert( i2 );
        	 	kSession.insert( i3 ); 

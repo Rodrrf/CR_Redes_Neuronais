@@ -1,7 +1,7 @@
 package com.sample;
 
 public class SensorMov {
-	Divisao divisao
+	Divisao divisao;
 	boolean ligado;
 	
 	public SensorMov(Divisao divisao, boolean ligado) {
