@@ -18,6 +18,9 @@ public class DroolsTest {
 
             // go !
             
+        	Proprietario p1 = new Proprietario("Cornélio Fonseca", 969420127); //proprietario da casa
+        	kSession.insert(p1); 
+        	
         	Divisao d1 = new Divisao ("rua");
        	 	Divisao d2 = new Divisao ("escritório");
        	 	Divisao d3 = new Divisao ("sala");
@@ -25,13 +28,12 @@ public class DroolsTest {
        	 	kSession.insert( d2 );
        	 	kSession.insert( d3 );
        	 	
+       	 	//detecaoPerimetro det = new detecaoPerimetro(d1, true);
+       	 	//kSession.insert(det);
        	 	
-       	 	detecaoPerimetro det = new detecaoPerimetro(d1, true);
-       	 	kSession.insert(det);
-       	 	
-       	 	CamVigilancia cam1 = new CamVigilancia(d1, false);
-    	 	CamVigilancia cam2 = new CamVigilancia(d2, false);
-    	 	CamVigilancia cam3 = new CamVigilancia(d3, false);
+       	 	CamVigilancia cam1 = new CamVigilancia(d1, false);	//rua tem sensor de movimento
+    	 	CamVigilancia cam2 = new CamVigilancia(d2, false);	//escritório tem sensor de movimento
+    	 	CamVigilancia cam3 = new CamVigilancia(d3, false);	//sala tem sensor de movimento
        	 	kSession.insert(cam1);
        	 	kSession.insert(cam2);
        	 	kSession.insert(cam3);
