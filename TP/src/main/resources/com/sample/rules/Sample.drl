@@ -6,18 +6,16 @@ import com.sample.DroolsTest.CamVigilancia;
 import com.sample.DroolsTest.Proprietario;
 import com.sample.DroolsTest.Divisao;
 import com.sample.DroolsTest.detecaoPerimetro;
- 
-rule "Hello World"
+import com.sample.DroolsTest.TeamSecurity;
+
+rule ""
     when
-        m : Message( status == Message.HELLO, myMessage : message )
+        $d: Divisao()
     then
-        System.out.println( myMessage );
-        m.setMessage( "Goodbye cruel world" );
-        m.setStatus( Message.GOODBYE );
-        update( m );
+        System.out.println( "teste 1 aplicado" );
 end
 
-rule "GoodBye"
+rule "teste2"
     when
         Message( status == Message.GOODBYE, myMessage : message )
     then
