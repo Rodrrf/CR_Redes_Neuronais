@@ -1,10 +1,10 @@
 package com.sample;
 
-public class Instruso {
+public class Intruso {
 	Divisao divisao;
 	String tipo;
 	
-	public Instruso(Divisao divisao, String tipo) {
+	public Intruso(Divisao divisao, String tipo) {
 		super();
 		this.divisao = divisao;
 		this.tipo = tipo;
