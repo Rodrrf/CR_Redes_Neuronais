@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="DROOLS/Drools"/>
+	<classpathentry kind="lib" path="C:/Users/Pedro/OneDrive/Ambiente de Trabalho/drools/droolsjbpm-integration-distribution-7.73.0.Final/binaries/kie-api-7.73.0.Final.jar" sourcepath="C:/Users/Pedro/OneDrive/Ambiente de Trabalho/drools/droolsjbpm-integration-distribution-7.73.0.Final/binaries/kie-api-7.73.0.Final.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
