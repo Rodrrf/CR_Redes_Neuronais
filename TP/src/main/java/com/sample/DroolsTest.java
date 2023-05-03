@@ -23,20 +23,27 @@ public class DroolsTest {
        	 	Divisao d3 = new Divisao ("sala");
        	 	kSession.insert( d1 );
        	 	kSession.insert( d2 );
-       	 	kSession.insert( d3 ); 
-       	 	//rua n tem sensor de movimento
-       	 	SensorMov asp2 = new SensorMov( d2, false ); //escritório tem aspersor
-       	 	SensorMov asp3 = new SensorMov( d3, false);
-       	 	kSession.insert( asp1 ); 
-       	 	kSession.insert( asp2 );
-       	 	kSession.insert( asp3 );
-       	 
-       	 	Fogo f1 = new Fogo (d1); //Fogo na cozinha
-       	 	Fogo f2 = new Fogo (d2); //Fogo no escritório
-       	 	Fogo f3 = new Fogo (d3); //Fogo na sala
-       	 	kSession.insert( f1 );
-       	 	kSession.insert( f2 );
-       	 	kSession.insert( f3 ); 
+       	 	kSession.insert( d3 );
+       	 	
+       	 	CamVigilancia cam1 = new CamVigilancia(d1, false);
+    	 	CamVigilancia cam2 = new CamVigilancia(d2, false);
+    	 	CamVigilancia cam3 = new CamVigilancia(d3, false);
+       	 	kSession.insert(cam1);
+       	 	kSession.insert(cam2);
+       	 	kSession.insert(cam3);
+       	
+    	 	//rua nao tem sensor de movimento
+       	 	SensorMov sensor2 = new SensorMov( d2, false ); //escritório tem sensor de movimento
+       	 	SensorMov sensor3 = new SensorMov( d3, false); //sala tem sensor de movimento
+       	 	kSession.insert( sensor2 );
+       	 	kSession.insert( sensor3 );
+       	 	
+       	 	Intruso i1 = new Intruso (d1, "pessoa"); //Fogo na rua
+       	 	Intruso i2 = new Intruso (d2, "pessoa"); //Fogo no escritório
+       	 	Intruso i3 = new Intruso (d3, "cao"); //Fogo na sala
+       	 	kSession.insert( i1 );
+       	 	kSession.insert( i2 );
+       	 	kSession.insert( i3 ); 
             kSession.fireAllRules();
         } catch (Throwable t) {
             t.printStackTrace();

@@ -1,7 +1,7 @@
 package com.sample;
 
 public class CamVigilancia {
-	Divisao divisao
+	Divisao divisao;
 	boolean ligado;
 	
 	public CamVigilancia(Divisao divisao, boolean ligado) {
