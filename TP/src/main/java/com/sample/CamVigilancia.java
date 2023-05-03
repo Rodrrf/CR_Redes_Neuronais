@@ -3,6 +3,8 @@ package com.sample;
 public class CamVigilancia {
 	Divisao divisao;
 	boolean ligado; //  0 - camara desligada 1 - camara ligada
+	boolean detecao; //  0 - horario de detecao desativado 1 - horario de detecao ativado
+	
 	public CamVigilancia(Divisao divisao, boolean ligado, boolean detecao) {
 		super();
 		this.divisao = divisao;
@@ -18,7 +20,7 @@ public class CamVigilancia {
 		this.detecao = detecao;
 	}
 
-	boolean detecao; //  0 - horario de detecao desativado 1 - horario de detecao ativado
+	
 
 	public Divisao getDivisao() {
 		return divisao;
