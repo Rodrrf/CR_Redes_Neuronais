@@ -21,15 +21,17 @@ public class DroolsTest {
         	Proprietario p1 = new Proprietario("Cornélio Fonseca", 969420127); //proprietario da casa
         	kSession.insert(p1); 
         	
-        	TeamSecurity team = new TeamSecurity("Verisure", 924257820); //equipa de segurança
+        	TeamSecurity team = new TeamSecurity("Verisure", 924257820, false, false); //equipa de segurança
         	kSession.insert(team);
         	
-        	Divisao d1 = new Divisao ("rua");
-       	 	Divisao d2 = new Divisao ("escritório");
-       	 	Divisao d3 = new Divisao ("sala");
+        	Divisao d1 = new Divisao ("rua", false);
+       	 	Divisao d2 = new Divisao ("escritório", false);
+       	 	Divisao d3 = new Divisao ("sala", false);
+       	 	Divisao d4 = new Divisao ("entrada", false);
        	 	kSession.insert( d1 );
        	 	kSession.insert( d2 );
        	 	kSession.insert( d3 );
+       	 	kSession.insert( d4 );
        	 	
        	 	//detecaoPerimetro det = new detecaoPerimetro(d1, true);
        	 	//kSession.insert(det);
