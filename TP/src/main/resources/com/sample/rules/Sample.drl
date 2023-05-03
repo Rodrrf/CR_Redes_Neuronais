@@ -8,16 +8,83 @@ import com.sample.DroolsTest.Divisao;
 import com.sample.DroolsTest.detecaoPerimetro;
 import com.sample.DroolsTest.TeamSecurity;
 
-rule ""
+rule "Se for detetado uma pessoa na rua no horário de deteção, ativa o sistema de deteção interno da casa e notifica proprietário"
     when
         $d: Divisao()
     then
         System.out.println( "teste 1 aplicado" );
 end
 
-rule "teste2"
+
+rule "Deixa de ser detetado uma pessoa na rua no horário de deteção e ninguém dentro de casa, desativa o sistema de deteção interno da casa"
     when
         Message( status == Message.GOODBYE, myMessage : message )
     then
         System.out.println( myMessage );
 end
+
+
+rule "Se for detetado uma pessoa na rua no horário de deteção, mas é introduzido um código válido à entrada de casa, o sistema de deteção interno da casa fica desativado"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+
+
+rule "Se for detetado uma pessoa na rua no horário de deteção, mas é introduzido um código inválido à entrada de casa, ativa fecho de portas nas entradas da casa"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+
+
+rule "Se for detetado um intruso dentro de uma divisão, ativado fecho da saída dessa divisão"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+
+
+rule "Se ativado fecho da saída dessa divisão, ativa alarme"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+
+
+rule "Se alarme ativado avisar equipa segurança e proprietário"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+
+
+rule "Se equipa de segurança chegar à propriedade, desativa fecho das portas dessa divisão"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+
+
+rule "Se equipa de segurança deteve intruso, desativar alarme e sistema de deteção interno da casa"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+
+
+rule "Tudo OK"
+    when
+        Message( status == Message.GOODBYE, myMessage : message )
+    then
+        System.out.println( myMessage );
+end
+
+
