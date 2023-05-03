@@ -1,6 +1,11 @@
 package com.sample.rules
  
-import com.sample.DroolsTest.Message;
+import com.sample.DroolsTest.Alarme;
+import com.sample.DroolsTest.SensorMov;
+import com.sample.DroolsTest.CamVigilancia;
+import com.sample.DroolsTest.Proprietario;
+import com.sample.DroolsTest.Divisao;
+import com.sample.DroolsTest.detecaoPerimetro;
  
 rule "Hello World"
     when
