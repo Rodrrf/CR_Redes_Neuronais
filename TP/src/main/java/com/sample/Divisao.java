@@ -2,6 +2,7 @@ package com.sample;
 
 public class Divisao {
 		String nome;
+		boolean fecho;
 
 		public String getNome() {
 			return nome;
@@ -11,9 +12,19 @@ public class Divisao {
 			this.nome = nome;
 		}
 
-		public Divisao(String nome) {
+		
+		public Divisao(String nome, boolean fecho) {
 			super();
 			this.nome = nome;
+			this.fecho = fecho;
+		}
+
+		public boolean isFecho() {
+			return fecho;
+		}
+
+		public void setFecho(boolean fecho) {
+			this.fecho = fecho;
 		}
 		
 }
