@@ -56,16 +56,19 @@ rule "Se for detetado um intruso dentro de uma divisão, ativado fecho da saída
         $i: Intruso(divisao==$d, true)
     then
         $d.setFecho(true);
+        update($d);
+        System.out.println("Intruso detetado, a fechar saida da divisao " + $i.getDivisao());
 end
 
 
 rule "Se ativado fecho da saída dessa divisão, ativa alarme"
     when
         $d: Divisao()
-        
-        
+        $d.isFecho()==true
+         
     then
         insert (new Alarme());
+        System.out.println("Alarme ativado");
 end
 
 
@@ -75,23 +78,31 @@ rule "Se alarme ativado avisar equipa segurança e proprietário"
         $s: TeamSecurity();
         $p: Proprietario();
     then
-        System.out.println();
+        System.out.println("Avisando o proprietario" + $p.getNome() + " de numero: " + $p.getNumero + "e a equipa de segurança " + $.s.getNomeTeam + "de numero: " + $s.getNumero);
 end
 
 
 rule "Se equipa de segurança chegar à propriedade, desativa fecho das portas dessa divisão"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+    	$d: Divisao()
+        $s: TeamSecurity(local == true)
     then
-        System.out.println( myMessage );
+        $d.setFecho(false);
+        System.out.println("Equipa de segurança chegou, a preparar para retirar o fecho das portas");
 end
 
 
 rule "Se equipa de segurança deteve intruso, desativar alarme e sistema de deteção interno da casa"
     when
-        
+        $s: TeamSecurity(deteve == true)
+        $a: Alarme()
+        $cam: CamVigilancia(!divisao.equals("rua"))
+        $sens: SensorMov(!divisao.equals("rua"))
     then
-        System.out.println( myMessage );
+        retract($a);
+        $cam.setLigado(false);
+        $sens.setLigado(false);
+        System.out.println("Intruso detido, a desativar sistema interno da casa");
 end
 
 
@@ -99,7 +110,7 @@ rule "Tudo OK"
     when
         not Alarm()
     then
-        System.out.println( Tudo OK );
+        System.out.println("Tudo OK");
 end
 */
 
