@@ -30,9 +30,18 @@ end
 
 rule "Deixa de ser detetado uma pessoa na rua no horário de deteção e ninguém dentro de casa, desativa o sistema de deteção interno da casa"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+    	not Intruso(divisao == "rua")
+    	$camera: CamVigilancia(divisao == "rua")
+    	$camera.isDetecao == true
+        $cam: CamVigilancia(divisao != "rua")
+        $s: sensorMov(divisao != "rua")
+       	
     then
-        System.out.println( myMessage );
+        $cam.setLigado(false);
+        update($cam);
+        $s.setLigado(false);
+        update($s);
+        System.out.println("Ninguém detetado na rua, desativando sistema de deteção interno");
 end
 
 
