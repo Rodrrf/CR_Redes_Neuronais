@@ -109,8 +109,8 @@ public class DroolsTest {
         			kSession.insert(team);
         		}
         		if(temp[6].equals("nao")) {
-        			Proprietario prt1 = new Proprietario("Jose", 912345712);
-        			kSession.insert(prt1);
+        			codigo cod = new codigo(false);
+        			kSession.insert(cod);
         		}
         	}
         	ler.close();
