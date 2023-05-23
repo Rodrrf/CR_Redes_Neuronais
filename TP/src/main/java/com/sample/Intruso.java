@@ -2,7 +2,7 @@ package com.sample;
 
 public class Intruso {
 	Divisao divisao;
-	boolean pessoa;
+	boolean pessoa; //true-pessoa false-animal
 	
 	
 

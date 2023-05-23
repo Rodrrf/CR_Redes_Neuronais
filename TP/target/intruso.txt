@@ -1,0 +1,2 @@
+Intruso;Divisao?;DetecaoPerim;CamVigili?;Alarme?;SensorMov?;TeamSecu?;Proprie?
+sim;rua;sim;sim;nao;sim;nao;nao;
