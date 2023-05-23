@@ -86,7 +86,7 @@ public class DroolsTest {
         			detecaoPerimetro dt1 = new detecaoPerimetro(d, false);
         			kSession.insert(dt1);
         		}
-        		if(temp[3].equals("sim")) {
+				if(temp[3].equals("sim")) {
         			CamVigilancia cm1 = new CamVigilancia(d, int1, true, true);
         			kSession.insert(cm1);
         		}else {
