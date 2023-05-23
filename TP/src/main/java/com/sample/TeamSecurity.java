@@ -25,6 +25,10 @@ public class TeamSecurity {
 			return numero;
 		}
 
+		public void setLocal(boolean local) {
+			this.local = local;
+		}
+
 		public boolean isDeteve() {
 			return deteve;
 		}

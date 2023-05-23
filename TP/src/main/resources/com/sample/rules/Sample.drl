@@ -66,7 +66,7 @@ end
 rule "Se ativado fecho da saída dessa divisão, ativa alarme"
     when
         $d: Divisao()
-        $d.isFecho()==true
+        $d.isFecho(divisao == $d)==true
          
     then
         insert (new Alarme());
@@ -76,10 +76,12 @@ end
 
 rule "Se alarme ativado avisar equipa segurança e proprietário"
     when
-        $a: Alarme();
-        $s: TeamSecurity();
-        $p: Proprietario();
+        $a: Alarme()
+        $s: TeamSecurity()
+        $p: Proprietario()
     then
+        $s.setLocal(true);
+        update($s);
         System.out.println("Avisando o proprietario" + $p.getNome() + " de numero: " + $p.getNumero + "e a equipa de segurança " + $.s.getNomeTeam + "de numero: " + $s.getNumero);
 end
 
