@@ -47,17 +47,30 @@ end
 
 rule "Se for detetado uma pessoa na rua no horário de deteção, mas é introduzido um código válido à entrada de casa, o sistema de deteção interno da casa fica desativado"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+        $i: Intruso(divisao == "rua")
+    	$camera: CamVigilancia(divisao == "rua")
+    	$camera.isDetecao == true
+        $cam: CamVigilancia(divisao != "rua")
+        $s: sensorMov(divisao != "rua")
+        $cod: codigo(true)
     then
-        System.out.println( myMessage );
+    	$cam.setLigado(false);
+        update($cam);
+        $s.setLigado(false);
+        update($s);
+        System.out.println("Foi introduzido um codigo valido, a desativar sistema de deteção interno");
 end
 
 
 rule "Se for detetado uma pessoa na rua no horário de deteção, mas é introduzido um código inválido à entrada de casa, ativa fecho de portas nas entradas da casa"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+        $i: Intruso(divisao == "rua")
+    	$camera: CamVigilancia(divisao == "rua")
+    	$camera.isDetecao == true
+    	$d: Divisao(divisao = "entrada")
+        $cod: codigo(false)
     then
-        System.out.println( myMessage );
+        $d.setFecho(true);
 end
 
 
