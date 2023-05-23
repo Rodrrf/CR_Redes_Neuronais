@@ -30,9 +30,18 @@ end
 
 rule "Deixa de ser detetado uma pessoa na rua no horário de deteção e ninguém dentro de casa, desativa o sistema de deteção interno da casa"
     when
-        Message( status == Message.GOODBYE, myMessage : message )
+    	not Intruso(divisao == "rua")
+    	$camera: CamVigilancia(divisao == "rua")
+    	$camera.isDetecao == true
+        $cam: CamVigilancia(divisao != "rua")
+        $s: sensorMov(divisao != "rua")
+       	
     then
-        System.out.println( myMessage );
+        $cam.setLigado(false);
+        update($cam);
+        $s.setLigado(false);
+        update($s);
+        System.out.println("Ninguém detetado na rua, desativando sistema de deteção interno");
 end
 
 
@@ -66,7 +75,7 @@ end
 rule "Se ativado fecho da saída dessa divisão, ativa alarme"
     when
         $d: Divisao()
-        $d.isFecho()==true
+        $d.isFecho(divisao == $d)==true
          
     then
         insert (new Alarme());
@@ -76,10 +85,12 @@ end
 
 rule "Se alarme ativado avisar equipa segurança e proprietário"
     when
-        $a: Alarme();
-        $s: TeamSecurity();
-        $p: Proprietario();
+        $a: Alarme()
+        $s: TeamSecurity()
+        $p: Proprietario()
     then
+        $s.setLocal(true);
+        update($s);
         System.out.println("Avisando o proprietario" + $p.getNome() + " de numero: " + $p.getNumero + "e a equipa de segurança " + $.s.getNomeTeam + "de numero: " + $s.getNumero);
 end
 
@@ -90,6 +101,9 @@ rule "Se equipa de segurança chegar à propriedade, desativa fecho das portas d
         $s: TeamSecurity(local == true)
     then
         $d.setFecho(false);
+        update($d);
+        $s.setDeteve(true);
+        update($s);
         System.out.println("Equipa de segurança chegou, a preparar para retirar o fecho das portas");
 end
 
