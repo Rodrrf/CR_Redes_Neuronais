@@ -92,7 +92,9 @@ rule "Se equipa de segurança chegar à propriedade, desativa fecho das portas d
         $s: TeamSecurity(local == true)
     then
         $d.setFecho(false);
-        update($d)
+        update($d);
+        $s.setDeteve(true);
+        update($s);
         System.out.println("Equipa de segurança chegou, a preparar para retirar o fecho das portas");
 end
 
