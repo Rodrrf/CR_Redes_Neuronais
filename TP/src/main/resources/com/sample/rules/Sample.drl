@@ -1,12 +1,12 @@
 package com.sample.rules
- 
-import com.sample.DroolsTest.Alarme;
-import com.sample.DroolsTest.SensorMov;
-import com.sample.DroolsTest.CamVigilancia;
-import com.sample.DroolsTest.Proprietario;
-import com.sample.DroolsTest.Divisao;
-import com.sample.DroolsTest.detecaoPerimetro;
-import com.sample.DroolsTest.TeamSecurity;
+
+import com.sample.Alarme;
+import com.sample.SensorMov;
+import com.sample.CamVigilancia;
+import com.sample.Proprietario;
+import com.sample.Divisao;
+import com.sample.detecaoPerimetro;
+import com.sample.TeamSecurity;
 
 //$d: Divisao() esta sintaxe vai buscar um a um cada objeto
 
@@ -14,7 +14,7 @@ rule "Se for detetado uma pessoa na rua no horário de deteção, ativa o sistem
     when
     	$d: Divisao() 
         $i: Intruso(divisao=="rua")
-        $cam: CamVigilancia(divisao=="rua",intruso == $i.isPessoa(), ligado == true, detecao == true)
+        $cam: CamVigilancia(divisao=="rua",intruso == $i, ligado == true, detecao == true)
         $cameras: CamVigilancia()
         $s: SensorMov()
     then
